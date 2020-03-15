@@ -1,11 +1,15 @@
 # Performing Word Count on the "War and Peace" text using Hive
 ### Download the text file
+```
 cd Hive_WordCount
 sudo apt install curl  ## curl is used for downloading file online
 curl http://www.gutenberg.org/files/2600/2600-0.txt >> book.txt  ## download the text using curl and save it as book.txt
+```
 
 ### Copy text file to HDFS
+```
 hadoop fs -put book.txt book.txt
+```
 
 ### hive_script.hive
 First, launch hive in terminal:  
@@ -24,9 +28,8 @@ SELECT word, count(1) AS count FROM
 (SELECT explode(split(line, ' ')) AS word FROM FILES) w
 GROUP BY word
 ORDER BY word;
-
 ```
-Explanation: -- 
+- Explanation: -- 
 
 ### Look at the output (limit 15 rows)
 ```
